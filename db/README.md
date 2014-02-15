@@ -21,9 +21,13 @@ DATABASE ROOT
 
 
 
-the directory structure has been replicated here, and templates have been provided as a sample for the contents of each file.
+The directory structure has been replicated here, and templates have been provided as a sample for the contents of each file.
 
-More information about Couchbase can be found in the following links:
--http://www.couchbase.com/documentation
--http://tugdualgrall.blogspot.com/2012/07/couchbase-101-install-store-and-query.html
--http://www.couchbase.com/mobile#mobile
+More information about Couchbase can be found in the following links
+-------
+
++ http://www.couchbase.com/documentation
+
++ http://tugdualgrall.blogspot.com/2012/07/couchbase-101-install-store-and-query.html
+
++ http://www.couchbase.com/mobile#mobile
