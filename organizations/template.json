@@ -1,0 +1,20 @@
+// This file will be stored in a database which consists entirely of organizations and their data
+
+{	
+	// Timestamp of last change
+	"last_updated": "2014-2-15 13:21:40",
+	"username": "organizationuser123",
+	// The organization picture itself is not stored in database. The URL is stored instead.
+	"image": "/img/organization/organizationuser123.jpeg",
+	"name": "Organization Name",
+	"website": "http://www.whatever.com",
+	"description": "this is a description for the organization - blah blah blah",
+
+
+	"events":[
+		// The list of organized events
+		// Event ID would be automatically generated.
+		"event_id"
+	]
+
+}	

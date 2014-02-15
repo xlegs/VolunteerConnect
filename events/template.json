@@ -1,0 +1,17 @@
+// This file will reside in a database just for events
+{
+			"organization": "Organization Name",
+			"event_time":{
+				"month": 7,
+				"day": 7,
+				"year": 2014
+			},
+			// the address is just a string with no attached metadata
+			"address": "221B Baker Street",
+
+			// For geolocation purposes
+			"latitude": 100.45,
+			"longitude": -50.23
+
+			"description": "this is a description for the event - blah blah blah"
+}			

@@ -1,0 +1,46 @@
+// This file will be stored in a database which consists entirely of users and their data
+
+{
+	// Timestamp of last change
+	"last_updated": "2014-2-15 13:21:40",
+	"username": "user123",
+	// The profile picture itself is not stored in database. The URL is stored instead.
+	"image": "/img/users/user123.jpeg",
+	"firstname": "Sally",
+	"lastname": "Sample",
+	"gender": "F",
+	"birthdate":{
+		"month": 7,
+		"day": 7,
+		"year": 1997
+	}
+	"description": "this is a description for the user - blah blah blah",
+
+
+	"events":[
+		// The list of associated events
+		"event":{
+			// Event ID is generated from the event name, date, and organizer
+			// The event ID will allow the user to be directed to the full event details
+			"event_id": "event_name2014215_organization_name",
+			// Status can be attended, upcoming, or saved
+			"status": "attended"
+		}
+	]
+
+	"organizations":[
+		// The list of organization connections
+
+		// Organization ID would be automatically generated based on the organization name
+		// This would be used to hyperlink to the organization profile page
+		"organization_id", "organization_id2", "organization_id3"
+			
+
+	]
+
+	"volunteers":[
+		// The list of volunteer connections
+		"username1","username2", "username3"
+	]
+
+}	
