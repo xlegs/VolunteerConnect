@@ -7,6 +7,7 @@
     <h2>Add an Event</h2>
     <?php
     if ($_POST) {
+     $_POST = array_map_recursive ("trim", $_POST);
      echo "<h3>Event Successfully Added</h3>";
      $newEntry = json_encode($_POST, true);
      // print_r($newEntry);

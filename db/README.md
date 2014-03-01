@@ -7,21 +7,21 @@ The following describes the directory structure for the proposed database.
 
 DATABASE ROOT
  + users
-   - username.json
-      -> stores information about each user
+   - emailaddress.json
+
+      -> stores information about each user.
  + organizations
-   - organization_name.json
-      -> stores information about each organization
+   - organizationname.json
+
+      -> stores information about each organization.
  + events
-   - unique_event_id.json
-      -> stores information about each event. Can be filtered by organization.
- + login
-   - user_or_organization_login.json
-      -> stores the hashed values of every user's password
+   - unique_event_name.json
+   
+      -> stores information about each event. Can be filtered by organization or by geolocation.
 
 
 
-The directory structure has been replicated here, and templates have been provided as a sample for the contents of each file.
+The directory structure has been replicated here, and templates have been provided as a sample for the contents of each file. The developer example files our actual sample files currently used in the development code on this repository.
 
 More information about Couchbase can be found in the following links
 -------

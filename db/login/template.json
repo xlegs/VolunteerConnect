@@ -1,8 +1,0 @@
-// This file will be stored in a database completely dedicated to just password hashes
-// Putting password hashes in the database with user info is asking for trouble
-
-{
-	// The password will of course be hashed
-	"password": "123456",
-
-}	
