@@ -6,7 +6,7 @@
 		<h2>Event Details</h2>
 		<?php
 		// adjust these parameters to match your installation
-		$cb = new Couchbase("127.0.0.1:8091", "", "", "events");
+		$cb = new Couchbase($CBSERVER, $CBUSER, $CBPASS, "events");
 		$viewResult = $cb->view($_GET['id']);
 
 		?>

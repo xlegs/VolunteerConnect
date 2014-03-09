@@ -13,10 +13,10 @@
      // print_r($newEntry);
      echo "</div></div>";
      // adjust these parameters to match your installation
-     $cb = new Couchbase("127.0.0.1:8091", "", "", "events");
+     $cb = new Couchbase($CBSERVER, "", "", "events");
      $cb -> add(convertToKey($_POST["title"]), $newEntry);
      
-     $cb = new Couchbase("127.0.0.1:8091", "", "", "organizations");
+     $cb = new Couchbase($CBSERVER, "", "", "organizations");
      $viewResult = $cb->view(getOrganizationUsername($_POST['organization']));
 
      $viewResult["events"][] = $_POST["title"];

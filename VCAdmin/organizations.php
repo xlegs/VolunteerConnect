@@ -9,7 +9,7 @@
          <?php
          ini_set('display_errors', 'On');
          // adjust these parameters to match your installation
-         $cb = new Couchbase("127.0.0.1:8091", "", "", "organizations");
+         $cb = new Couchbase($CBSERVER, "", "", "organizations");
          $viewResult = $cb->view("organizations", "listAll");
          // echo "<pre>";
          // print_r($viewResult); 

@@ -1,4 +1,8 @@
  <?php
+      $CBSERVER = "sd13.scu.edu:8091";
+      $CBUSER = "";
+      $CBPASS = "";
+
       function convertToKey($eventName){
         $eventName = str_replace(" ", "_", $eventName);
         $eventName = strtolower($eventName);

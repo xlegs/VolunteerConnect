@@ -9,11 +9,11 @@
     if ($_POST) {
      $_POST = array_map_recursive ("trim", $_POST);
      echo "<h3>Organization Successfully Added</h3>";
-     $newEntry = json_encode($_POST, true);
-     print_r($newEntry);
+     // $newEntry = json_encode($_POST, true);
+     // print_r($newEntry);
      echo "</div></div>";
      // adjust these parameters to match your installation
-     $cb = new Couchbase("127.0.0.1:8091", "", "", "organizations");
+     $cb = new Couchbase($CBSERVER, "", "", "organizations");
      $cb -> add(getOrganizationUsername($_POST["name"]), $newEntry);
      
 

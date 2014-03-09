@@ -6,7 +6,7 @@
 		<h2>Organization Details</h2>
 		<?php
 		// adjust these parameters to match your installation
-		$cb = new Couchbase("127.0.0.1:8091", "", "", "organizations");
+		$cb = new Couchbase($CBSERVER, "", "", "organizations");
 		$viewResult = $cb->view($_GET['id']);
 
 		?>
