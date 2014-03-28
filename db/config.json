@@ -1,0 +1,21 @@
+{
+   "interface":":4984",
+   "adminInterface":":4985",
+   "log":["REST"],
+   "persona": { 
+      "origin": "http://localhost:4984/", 
+      "register": true 
+   },
+   "databases":{
+      "sync_events":{
+         "server":"http://localhost:8091",
+         "bucket":"events",
+         "sync":`function(doc) {channel("events"); access(GUEST, "events"); }`
+      },
+      "sync_organizations":{
+         "server":"http://localhost:8091",
+         "bucket":"organizations",
+         "sync":`function(doc) {channel("organizations"); access(GUEST, "organizations"); }`
+      }
+   }
+}

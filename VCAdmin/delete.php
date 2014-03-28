@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="small-12 columns">
-    <h2>Delete an <?php echo(ucfirst(substr($_GET['bucket'], 0, -1))); ?></h2>
+    <h2>Delete <?php echo(ucfirst(substr($_GET['bucket'], 0, -1))); ?></h2>
     
     <?php
     ini_set('display_errors', 'On');

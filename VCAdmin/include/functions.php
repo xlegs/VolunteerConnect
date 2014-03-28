@@ -1,5 +1,7 @@
  <?php
-      $CBSERVER = "sd13.scu.edu:8091";
+ 
+      // $CBSERVER = "sd13.scu.edu:8091";
+      $CBSERVER = "localhost:8091";
       $CBUSER = "";
       $CBPASS = "";
 
