@@ -14,7 +14,7 @@
      echo "</div></div>";
      // adjust these parameters to match your installation
      $cb = new Couchbase($CBSERVER, "", "", "users");
-     $cb -> add(convertToKey($_POST["username"]), $newEntry);
+     $cb -> add(convertToKey($_POST["email"]), $newEntry);
 
  
       // echo "<pre>";
