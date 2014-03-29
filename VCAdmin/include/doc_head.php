@@ -2,7 +2,7 @@
 <?php
 session_start();
 require_once "persona.php";
-ini_set('display_errors', 'On');
+// ini_set('display_errors', 'On');
 $button = $email = NULL;
 if (isset($_SESSION['persona'])) {
     $result = $_SESSION['persona'];

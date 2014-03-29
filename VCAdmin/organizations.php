@@ -25,7 +25,8 @@
         echo "<p>".$out["description"]."</p>";
         echo '</div>';
         echo '<div class="small-4">';
-        echo '<a class = "button" href="organization.php?id='.getOrganizationUsername ($out["name"]).'"> More Information</a>';
+        echo '<a class = "button" href="organization.php?id='.getOrganizationUsername ($out["name"]).'"> More Information</a> ';
+        echo '<a class = "button" href="organization.php?edit=1&id='.getOrganizationUsername ($out["name"]).'"> Modify</a>';
         echo "</div>";
         echo "</div>";
       } 

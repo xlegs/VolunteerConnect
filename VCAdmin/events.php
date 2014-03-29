@@ -78,7 +78,8 @@
              echo "<p>".$out["description"]."</p>";
              echo '</div>';
              echo '<div class="small-4">';
-             echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a>';
+             echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a> ';
+             echo '<a class = "button" href="add_event.php?edit=1&id='.convertToKey($out["title"]).'"> Modify</a>';
              echo "</div>";
              echo "</div>";
            }
@@ -98,7 +99,8 @@
         echo "<p>".$out["description"]."</p>";
         echo '</div>';
         echo '<div class="small-4">';
-        echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a>';
+        echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a> ';
+        echo '<a class = "button" href="add_event.php?edit=1&id='.convertToKey($out["title"]).'"> Modify</a>';
         echo "</div>";
         echo "</div>";
       } 
