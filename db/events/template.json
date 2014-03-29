@@ -1,11 +1,9 @@
 // This file will reside in a database just for events
 {
+			"title": "Food for Families Vegetable Wash",
 			"organization": "Organization Name",
-			"event_time":{
-				"month": 7,
-				"day": 7,
-				"year": 2014
-			},
+			"event_date": "7/7/2014",
+			"event_time":"15:16",
 			// the address is just a string with no attached metadata
 			"address": "221B Baker Street",
 

@@ -1,8 +1,6 @@
 // This file will be stored in a database which consists entirely of organizations and their data
 
 {	
-	// Timestamp of last change
-	"last_updated": "2014-2-15 13:21:40",
 	"username": "organizationuser123",
 	// The organization picture itself is not stored in database. The URL is stored instead.
 	"image": "/img/organization/organizationuser123.jpeg",

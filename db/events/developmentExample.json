@@ -1,11 +1,8 @@
 {
   "title": "Food for Families Vegetable Wash",
   "organization": "Food for Families",
-  "event_time": {
-    "month": 7,
-    "day": 7,
-    "year": 2014
-  },
+  "event_date": "7/7/2014",
+  "event_time":"15:16",
   "address": "32 Wallaby Way",
   "latitude": 108.45,
   "longitude": -57.23,
