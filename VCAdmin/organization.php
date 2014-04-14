@@ -24,20 +24,37 @@
 				echo "<tr>";
 				foreach ($viewResult as $key => $value) {
 					echo "<td>".ucfirst($key).":</td>";
-					if ($key == "events") {
-						echo "<td>";
-						echo "<ul>";
-						foreach ($value as $k => $v){
-							echo "<li>";
-							echo "<a href='event.php?id=".convertToKey($v)."'>".$v."</a>";
-							echo "</li>";
-						}
-						echo "</ul>";
-						echo "</td>";
+					switch ($key) {
+						case 'profileimage':
+							echo "<td>";
+					        echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					        echo "</td>";
+					        break;
+					    case 'coverimage':
+					    		echo "<td>";
+					            echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					            echo "</td>";
+					            break;
+						case 'events':
+							echo "<td>";
+							echo "<ul>";
+							foreach ($value as $k => $v){
+								echo "<li>";
+								echo "<a href='event.php?id=".convertToKey($v)."'>".$v."</a>";
+								echo "</li>";
+							}
+							echo "</ul>";
+							echo "</td>";
+							break;
 
-					}else{
-						echo "<td>".$value."</td>";
+						
+						
+
+						default:
+							echo "<td>".$value."</td>";
+							break;
 					}
+
 					
 				echo "</tr>";
 				}

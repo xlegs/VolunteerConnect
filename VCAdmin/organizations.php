@@ -7,7 +7,7 @@
       <a class = "button" href="add_organization.php"> Add a New Organization</a>
      
          <?php
-         ini_set('display_errors', 'On');
+         // ini_set('display_errors', 'On');
          // adjust these parameters to match your installation
          $cb = new Couchbase($CBSERVER, "", "", "organizations");
          $viewResult = $cb->view("organizations", "listAll");
@@ -18,15 +18,27 @@
        
       foreach ($viewResult["rows"] as $key => $value) {
         $out = $value["value"];
+        if ($_SESSION["type"] == "organization" && $_SESSION['email'] != $out["username"]) {
+          // only show items were user has access
+          continue;
+        }
         echo '<div class="panel">';
-        echo '<div class="small-8">';
+        echo '<div class="small-4 columns">';
+        if ($out["profileimage"]) {
+          $image = '<img src="data:image/jpg;base64,'.$out["profileimage"].'" />';
+        } else {
+          $image = '<img src="http://placehold.it/150" />';
+        }
+        echo $image;
+        echo "</div>";
+        echo '<div class="small-6 columns">';
         echo "<h3>".$out["name"]."</h3>";
         echo "<h4><a target='_blank' href='".$out["website"]."'>".$out["website"]."</a></h4>";
         echo "<p>".$out["description"]."</p>";
         echo '</div>';
-        echo '<div class="small-4">';
-        echo '<a class = "button" href="organization.php?id='.getOrganizationUsername ($out["name"]).'"> More Information</a> ';
-        echo '<a class = "button" href="organization.php?edit=1&id='.getOrganizationUsername ($out["name"]).'"> Modify</a>';
+        echo '<div>';
+        echo '<a class = "button" href="organization.php?id='.getOrganizationKey ($out["name"]).'"> More Information</a> ';
+        echo '<a class = "button" href="add_organization.php?edit=1&id='.getOrganizationKey ($out["name"]).'"> Modify</a>';
         echo "</div>";
         echo "</div>";
       } 

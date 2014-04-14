@@ -16,7 +16,7 @@
      if ($_GET['bucket'] == "events") {
      	$org = json_decode($cb -> get($_GET["id"]));
 
-     	$org = getOrganizationUsername($org->organization);
+     	$org = getOrganizationKey($org->organization);
       	$cb2 = new Couchbase($CBSERVER, "", "", "organizations");
      	$viewResult = json_decode($cb2->get($org),true);
      	

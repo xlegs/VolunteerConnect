@@ -11,7 +11,7 @@
         return $eventName;
       }
 
-      function getOrganizationUsername($organizationName){
+      function getOrganizationKey($organizationName){
         $organizationName = str_replace(" ", "", $organizationName);
         $organizationName = strtolower($organizationName);
         return $organizationName;
@@ -29,4 +29,31 @@
               }
               return $array;
           }
+        function checkImage($filename) {
+          $allowedExts = array("gif", "jpeg", "jpg", "png");
+          $temp = explode(".", $_FILES[$filename]["name"]);
+          $extension = end($temp);
+          if ((($_FILES[$filename]["type"] == "image/gif")
+          || ($_FILES[$filename]["type"] == "image/jpeg")
+          || ($_FILES[$filename]["type"] == "image/jpg")
+          || ($_FILES[$filename]["type"] == "image/pjpeg")
+          || ($_FILES[$filename]["type"] == "image/x-png")
+          || ($_FILES[$filename]["type"] == "image/png"))
+          && ($_FILES[$filename]["size"] < 20000)
+          && in_array($extension, $allowedExts))
+            {
+            if ($_FILES[$filename]["error"] > 0)
+              {
+              echo "Error: " . $_FILES[$filename]["error"] . "<br>";
+              }
+            else
+              {
+              return true;
+              }
+            }
+          else
+            {
+            return false;
+            } 
+        }
       ?>

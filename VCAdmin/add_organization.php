@@ -7,14 +7,38 @@
     <h2>Add an Organization</h2>
     <?php
     if ($_POST["username"]) {
+
+    $cb = new Couchbase($CBSERVER, "", "", "organizations");
+    $r = $cb->view($_GET['id']);
+
+
+    $newEntry = $_POST;
+    if(!checkImage("profileimage")){
+      $encodedImage = $r["profileimage"];
+      echo "Profile Image ignored. </br>";
+    }else{
+      $encodedImage = base64_encode(file_get_contents($_FILES["profileimage"]["tmp_name"]));
+      echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
+    }
+    
+    $newEntry["profileimage"] = $encodedImage;
+
+    if(!checkImage("coverimage")){
+         $encodedImage = $r["coverimage"];
+          echo "Cover Image ignored. </br>";
+        }else{
+          $encodedImage = base64_encode(file_get_contents($_FILES["coverimage"]["tmp_name"]));
+          echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
+        }
+        
+        $newEntry["coverimage"] = $encodedImage;
      $_POST = array_map_recursive ("trim", $_POST);
      echo "<h3>Organization Successfully Added</h3>";
-     $newEntry = json_encode($_POST, true);
-     // print_r($newEntry);
-     echo "</div></div>";
+  
+ 
      // adjust these parameters to match your installation
      $cb = new Couchbase($CBSERVER, "", "", "organizations");
-     $cb -> set(getOrganizationUsername($_POST["name"]), $newEntry);
+     $cb -> set(getOrganizationKey($_POST["name"]), json_encode($newEntry, true));
      
 
 
@@ -27,10 +51,26 @@
        // adjust these parameters to match your installation
        $cb = new Couchbase($CBSERVER, "", "", "organizations");
        $r = $cb->view($_GET['id']);
+
+       if ($_SESSION["type"] == "organization" && $_SESSION['email'] != $r["username"]) {
+         echo "<h3>Access Denied: Insufficient Privileges</h3>";
+         include("include/doc_footer.php");
+         exit (1);
+       }
      }
  ?>
- <form method="POST">
-
+ <form method="POST" enctype="multipart/form-data">
+<div class="row">
+ <div class="large-6 columns">
+   <label>Profile Image:
+    <input type="file" name="profileimage" />
+   </label>
+ </div><div class="large-6 columns">
+   <label>Cover Image:
+    <input type="file" name="coverimage" />
+   </label>
+ </div>
+ </div>
   <div class="row">
     <div class="large-4 columns">
       <label>Username

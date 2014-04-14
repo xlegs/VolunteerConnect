@@ -25,6 +25,16 @@
 				foreach ($viewResult as $key => $value) {
 					echo "<td>".ucfirst($key).":</td>";
 					switch ($key) {
+						case 'profileimage':
+							echo "<td>";
+					        echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					        echo "</td>";
+					        break;
+					    case 'coverimage':
+					    		echo "<td>";
+					            echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					            echo "</td>";
+					            break;
 						case 'events':
 							echo "<td>";
 							echo "<ul>";
@@ -42,7 +52,7 @@
 							echo "<ul>";
 							foreach ($value as $k => $v){
 								echo "<li>";
-								echo "<a href='organization.php?id=".getOrganizationUsername($v)."'>".$v."</a>";
+								echo "<a href='organization.php?id=".getOrganizationKey($v)."'>".$v."</a>";
 								echo "</li>";
 							}
 							echo "</ul>";

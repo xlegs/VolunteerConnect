@@ -59,39 +59,31 @@
          // echo "<pre>";
          // print_r($viewResult); 
          // echo "</pre>";
+          unset($distance);
          if ($_POST) {
-
-           foreach ($viewResult["rows"] as $key => $value) {
-             $out = $value["value"];
-             $distance = haversineGreatCircleDistance(floatval($_POST["lat"]),floatval($_POST["long"]),$out["latitude"], $out["longitude"]);
-             if ($distance > 5000) {
-               // if outside of 5 km, ignore it
-               continue;
-             }
-             echo '<div class="panel">';
-             echo '<div class="small-8">';
-             echo "<h3>".$out["title"]."</h3>";
-             echo "<h4>".$out["organization"]."</h4>";
-             $distance =  round ($distance/1000, 2);
-             echo "<h4>Distance: ".$distance." Kilometers</h4>";
-
-             echo "<p>".$out["description"]."</p>";
-             echo '</div>';
-             echo '<div class="small-4">';
-             echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a> ';
-             echo '<a class = "button" href="add_event.php?edit=1&id='.convertToKey($out["title"]).'"> Modify</a>';
-             echo "</div>";
-             echo "</div>";
-           }
-           echo "</div></div>";
-           include("include/doc_footer.php");
-           exit (1);
+          $distance = 0;
+          
          }
          ?>
+
       <?php
        
       foreach ($viewResult["rows"] as $key => $value) {
         $out = $value["value"];
+
+        if (isset($distance)) {
+          $distance = haversineGreatCircleDistance(floatval($_POST["lat"]),floatval($_POST["long"]),$out["latitude"], $out["longitude"]);
+          if ($distance > 5000) {
+            // distance greater than 5 km, so skip
+            continue;
+          }
+        }
+
+        if ($_SESSION["type"] == "organization" && $_SESSION['email'] != $out["owner"]) {
+          // only show items were user has access
+          continue;
+        }
+
         echo '<div class="panel">';
         echo '<div class="small-8">';
         echo "<h3>".$out["title"]."</h3>";

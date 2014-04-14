@@ -7,16 +7,18 @@
     if ($_POST["title"]) {
       $_POST = array_map_recursive ("trim", $_POST);
 
-      $newEntry = json_encode($_POST, true);
+      $newEntry = $_POST;
     // print_r($newEntry);
-      echo "</div></div>";
+      // echo "</div></div>";
   // adjust these parameters to match your installation
       $cb = new Couchbase($CBSERVER, "", "", "events");
+      $r = $cb->view($_GET['id']);
+
       $cb2 = new Couchbase($CBSERVER, "", "", "organizations");
 
 
       try {
-        $viewResult = $cb2->view(getOrganizationUsername($_POST['organization']));
+        $viewResult = $cb2->view(getOrganizationKey($_POST['organization']));
       } catch (CouchbaseException $e) {
         echo "<h3>Organization ".$_POST['organization']." does not exist. Please verify that the organization is spelled correctly and try again. The event has not been added. </h3>";
         include("include/doc_footer.php");
@@ -25,15 +27,17 @@
 
       echo "<h3>Event Successfully Added</h3>";
       $viewResult["events"][] = $_POST["title"];
+      $newEntry["owner"] = $viewResult["username"];
       // echo "<pre>";
       //  print_r($viewResult); 
       //  echo "</pre>";
-      $cb -> set(convertToKey($_POST["title"]), $newEntry);
-      $cb2 -> replace(getOrganizationUsername($_POST['organization']), json_encode($viewResult));
+      $cb -> set(convertToKey($_POST["title"]), json_encode($newEntry));
+      $cb2 -> replace(getOrganizationKey($_POST['organization']), json_encode($viewResult));
 
       include("include/doc_footer.php");
       exit (1);
     }
+
     if ($_GET["edit"]) {
       // adjust these parameters to match your installation
       $cb = new Couchbase($CBSERVER, "", "", "events");

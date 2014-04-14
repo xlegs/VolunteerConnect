@@ -6,16 +6,38 @@
   <div class="small-12 columns">
     <h2>Add a User</h2>
     <?php
-
-    if ($_POST["username"] ) {
-     $_POST = array_map_recursive ("trim", $_POST);
-     echo "<h3>User Successfully Added</h3>";
-     $newEntry = json_encode($_POST, true);
-     // print_r($newEntry);
-     echo "</div></div>";
      // adjust these parameters to match your installation
      $cb = new Couchbase($CBSERVER, "", "", "users");
-     $cb -> set(convertToKey($_POST["email"]), $newEntry);
+    $r = $cb->view($_GET['id']);
+    if ($_POST["username"] ) {
+    $newEntry = $_POST;
+    if(!checkImage("profileimage")){
+      $encodedImage = $r["profileimage"];
+      echo "Profile Image ignored. </br>";
+    }else{
+      $encodedImage = base64_encode(file_get_contents($_FILES["profileimage"]["tmp_name"]));
+      echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
+    }
+    
+    $newEntry["profileimage"] = $encodedImage;
+
+    if(!checkImage("coverimage")){
+         $encodedImage = $r["coverimage"];
+          echo "Cover Image ignored. </br>";
+        }else{
+          $encodedImage = base64_encode(file_get_contents($_FILES["coverimage"]["tmp_name"]));
+          echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
+        }
+        
+        $newEntry["coverimage"] = $encodedImage;
+
+     $_POST = array_map_recursive ("trim", $_POST);
+     echo "<h3>User Successfully Added</h3>";
+     // $newEntry = json_encode($_POST, true);
+     
+
+     
+     $cb -> set(convertToKey($_POST["email"]), json_encode($newEntry, true));
      include("include/doc_footer.php");
      exit (1);
     }
@@ -27,12 +49,30 @@
     }
 
  ?>
- <form method="POST">
-
+ <form method="POST" enctype="multipart/form-data">
+ <div class="row">
+ <div class="large-6 columns">
+   <label>Profile Image:
+    <input type="file" name="profileimage" />
+   </label>
+ </div><div class="large-6 columns">
+   <label>Cover Image:
+    <input type="file" name="coverimage" />
+   </label>
+ </div>
+ </div>
   <div class="row">
     <div class="large-4 columns">
       <label>User Name
         <input type="text" name="username" placeholder="username" value="<?php echo($r["username"]); ?>" />
+      </label>
+    </div>
+    <div class="large-4 columns">
+      <label>User Type
+        <select name="type">
+          <option value="admin">Administrator</option>
+          <option value="organization" <?php if ($r["type"] == "organization") echo "selected"; ?>>Organization</option>
+        </select>
       </label>
     </div>
     <div class="large-4 columns">
@@ -42,7 +82,7 @@
     </div>
     
   </div>
-
+ 
   <div class="row">
     <div class="large-4 columns">
       <label>First Name
