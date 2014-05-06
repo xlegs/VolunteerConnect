@@ -4,7 +4,7 @@
 <?php
 session_start();
 require_once "include/persona.php";
-ini_set('display_errors', 'On');
+ 
 $button = $email = NULL;
 if (isset($_POST['assertion'])) {
     $persona = new Persona();
@@ -13,16 +13,18 @@ if (isset($_POST['assertion'])) {
     if ($result->status === 'okay') {
          // adjust these parameters to match your installation
        $cb = new Couchbase($CBSERVER, "", "", "users");
-       try{
+
         $viewResult = json_decode($cb->get($result->email));
-       } catch (CouchbaseException $e) {
+       if (!isset($viewResult)) {
           $button = "<p>Error: This user account is not registered with the VolunteerConnect Console. Contact an administrator to continue.</p>";
-          $button .= "<p><a href=\"index.php\">Back to login page</a></p>";
+          $button .= "<p><a href='javascript:navigator.id.logout()'>Back to login page</a></p>";
           echo $button;
+
+          
           include("include/doc_footer.php");
+
           exit();
       }
-
         // user account verified
       $button = "<p>Logged in as: " . $result->email . "</p>";
       $button .= '<p><a href="javascript:navigator.id.logout()">Logout</a></p>';

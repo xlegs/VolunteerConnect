@@ -24,7 +24,23 @@
 				echo "<tr>";
 				foreach ($viewResult as $key => $value) {
 					echo "<td>".ucfirst($key).":</td>";
-						echo "<td>".$value."</td>";
+					switch ($key) {
+						case 'profileimage':
+							echo "<td>";
+					        echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					        echo "</td>";
+					        break;
+					    case 'coverimage':
+					    		echo "<td>";
+					            echo '<img src="data:image/jpg;base64,'.$value.'" />';
+					            echo "</td>";
+					            break;
+						
+						default:
+							echo "<td>".$value."</td>";
+							break;
+					}
+
 					
 				echo "</tr>";
 				}

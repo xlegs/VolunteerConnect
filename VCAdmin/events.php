@@ -52,7 +52,7 @@
          </form>
          <hr/>
          <?php
-         ini_set('display_errors', 'On');
+          
          // adjust these parameters to match your installation
          $cb = new Couchbase($CBSERVER, $CBUSER, $CBPASS, "events");
          $viewResult = $cb->view("events", "listAll");
@@ -85,12 +85,20 @@
         }
 
         echo '<div class="panel">';
-        echo '<div class="small-8">';
+        echo '<div class="small-4 columns">';
+        if ($out["profileimage"]) {
+          $image = '<img src="data:image/jpg;base64,'.$out["profileimage"].'" />';
+        } else {
+          $image = '<img src="http://placehold.it/150" />';
+        }
+        echo $image;
+        echo "</div>";
+        echo '<div class="small-6 columns">';
         echo "<h3>".$out["title"]."</h3>";
         echo "<h4>".$out["organization"]."</h4>";
         echo "<p>".$out["description"]."</p>";
         echo '</div>';
-        echo '<div class="small-4">';
+        echo '<div>';
         echo '<a class = "button" href="event.php?id='.convertToKey($out["title"]).'"> More Information</a> ';
         echo '<a class = "button" href="add_event.php?edit=1&id='.convertToKey($out["title"]).'"> Modify</a>';
         echo "</div>";

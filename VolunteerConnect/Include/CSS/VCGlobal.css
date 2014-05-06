@@ -1,0 +1,41 @@
+/* 	Colors ---------------------
+
+	Primary Orange: #F95400;
+	Light Orange: #FF8036;
+	Dark Orange: #EE4100;
+	Black (20%): #CDCDCD;
+	Black (5%): #F3F3F3;
+	
+	---------------------------- */
+	
+body {
+		height:600px;
+		width:800px;
+		background-color:#F3F3F3;
+}
+
+#content {
+	height:100%;
+	width:100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	
+}
+
+div.column {
+	height:100%;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+div.object {
+	height:auto;
+	width:100%;
+	padding:10px;
+	border:0.5px solid #CDCDCD;
+	box-shadow: 2px 2px 2px #888888;
+}
+
+::-webkit-scrollbar, ::-webkit-scrollbar-button:start, ::-webkit-scrollbar-button:end, ::-webkit-scrollbar-corner {
+   display:none;
+}

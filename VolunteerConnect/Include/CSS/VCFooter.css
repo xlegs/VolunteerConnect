@@ -1,0 +1,16 @@
+div#footer {
+	width:100%;
+	height:auto;
+	background-color:white;
+	text-align:center;
+	padding:9px;
+	
+	border-top:1px solid grey;
+	
+	font-family:Helvetica, san serif;
+	color:#FF8036;
+	font-weight:normal;
+	font-size:10px;
+	line-height:12px;
+	text-decoration:none;
+}

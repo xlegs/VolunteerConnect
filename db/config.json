@@ -16,6 +16,11 @@
          "server":"http://localhost:8091",
          "bucket":"organizations",
          "sync":`function(doc) {channel("organizations"); access(GUEST, "organizations"); }`
+      },
+      "sync_user":{
+         "server":"http://localhost:8091",
+         "bucket":"users",
+         "sync":`function(doc) {channel(doc.email); access(GUEST, doc.email); }`
       }
    }
 }

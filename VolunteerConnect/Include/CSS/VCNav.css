@@ -1,0 +1,35 @@
+/* 	Colors ---------------------
+
+	Primary Orange: #F95400;
+	Light Orange: #FF8036;
+	Dark Orange: #EE4100;
+	Black (20%): #CDCDCD;
+	Black (5%): #F3F3F3;
+	
+	---------------------------- */
+
+div.nav {
+	width:100%;
+	height:auto;
+	background-color:#F95400;
+	text-align:center;
+	v-align:center;
+	padding:10px;
+	
+	font-family:Helvetica, san serif;
+	color:white;
+	font-weight:normal;
+	font-size:13px;
+	line-height:12px;
+	letter-spacing:10px;
+}
+
+div.nav a {
+	font-family:Helvetica, san serif;
+	color:white;
+	font-weight:Heavy;
+	font-size:13px;
+	line-height:12px;
+	text-decoration:none;
+	letter-spacing:1px;
+}

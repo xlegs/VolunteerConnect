@@ -2,7 +2,7 @@
 <?php
 session_start();
 require_once "persona.php";
-// ini_set('display_errors', 'On');
+ //  
 $button = $email = NULL;
 if (isset($_SESSION['persona'])) {
     $result = $_SESSION['persona'];
@@ -39,9 +39,10 @@ if (isset($_SESSION['persona'])) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation | Welcome</title>
+    <title>VolunteerConnect Control Panel</title>
     <link rel="stylesheet" type="text/css" href="css/persona-button.css"/>
     <link rel="stylesheet" href="css/foundation.css" />
     <script src="js/vendor/modernizr.js"></script>
+    <script src="js/vendor/jquery.js"></script>
   </head>
   <body>

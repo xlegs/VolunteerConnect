@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/* 	Colors ---------------------
+
+	Primary Orange: #F95400;
+	Light Orange: #FF8036;
+	Dark Orange: #EE4100;
+	Black (20%): #CDCDCD;
+	Black (5%): #F3F3F3;
+	
+	---------------------------- */
+
+/* Main */
+
+html, body {
+	/*width:320px;
+	height:480px;*/
+	background: white;
+	overflow: hidden;
+	padding:0;
+	margins:0;
+}
+
+div#nav {
+	width: 100%;
+	height: 3%;
+	background-color:#F3F3F3;
+}
+
+div#navactive {
+	width: 100%;
+	height: auto;
+	background-color:#F3F3F3;
+	v-align:middle;
+	text-align:center;
+	padding:10px;
+}
+
+div#tabnav {
+	height:15px;
+	background-color:#FF8036;
+	padding:10px;
+	margin:0px;
+	text-align:right;
+}
+
+div#header {
+	height:auto;
+	background-color:#F95400;
+	padding:12px;
+	margin:0px;
+	text-align:left;
+	color:white;
+	font-family:"Helvetica", sans-serif;
+	font-size:25px;
+	line-height:20px;
+	font-weight:450;
+}
+
+div#content {
+	width: 100%;
+	background-color:light grey;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+div#search {
+	width:100%;
+	height:3%;
+	background-color:#FF8036;
+}
+
+
+div#description {
+	height: 64px;
+	background-color:#F95400;
+	padding:20px;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	font-family:"Arial", sans-serif;
+	letter-spacing:0.5px;
+	font-size:10px;
+	font-weight:10;
+	color:white;
+}
+
+/* Nav Height */
+
+div#content.attend, div#content.event {
+	height:94%;
+}
+
+div#content.orgprofile, div#content.profile, div#content.settings {
+	height:97%;	
+}
+
+div#content.more {
+	width:100%;
+	height:97%;
+	background-color:#F95400;
+}
+
+/* Attend */
+
+div.listing {
+	height: auto;
+	width:100%;
+	padding:0px;
+	padding-top:14px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #CDCDCD;
+	align:top;
+	overflow:hidden;
+}
+
+div.thumb {
+	height:100px;
+	width:60px;
+	margin:0px;
+	margin-right:10px;
+	float:left;
+}
+
+/* Organization Profile */
+
+div#orgprofilepic {
+	height: 150px;
+	background-color:#FF8036;
+	padding:20px;
+	text-shadow: 2px 2px black;
+}
+
+div#events {
+	height:100%;
+}
+
+/*Event Profile*/
+
+div#eventprofilepic {
+	height: 150px;
+	background-color:#FF8036;
+	padding:20px;
+	text-shadow: 2px 2px black;
+}
+
+/*Volunteer Profile*/
+
+div#volunteerprofileinfo {
+	height: 140px;
+	widht:100%;
+	background-color:#F95400;
+	padding:20px;
+	background-repeat:no-repeat;
+	padding:10px;
+	padding-left:170px;
+}
+
+/* More Menu */
+
+div.morelisting {
+	height: auto;
+	width:auto;
+	padding:0px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	border-bottom: 1px solid #FF8036;
+	align:top;
+	overflow:hidden;
+}
+

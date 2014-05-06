@@ -1,18 +1,22 @@
 <?php
 session_start();
 require_once "include/persona.php";
-ini_set('display_errors', 'On');
+ 
 $button = $email = NULL;
 if (!empty($_GET['logout'])) {
     $button = "<p>You have logged out. ";
-    $button .= "<a href=\"index.php\">Back to login page</a></p>";
+    $button .= "<p><a class=\"persona-button\" href=\"javascript:navigator.id.request()\"><span>Login with Persona</span></a></p>";
     session_destroy();
 } elseif (isset($_SESSION['email'])) {
     $result = $_SESSION['persona'];
-
+    
     if ($result->status === 'okay') {
+        print_r($r);
         $button = "<p>Logged in as: " . $_SESSION['email'];
         $button .= ' <a href="javascript:navigator.id.logout()">Logout</a></p>';
+        $button .= "<p>This page will redirect shortly. Click <a href='index2.php'>here</a> if it does not.</p>";
+        $button .= "<script>setTimeout(function () {window.location.replace('index2.php');}, 3000); </script>";
+
         $email = $_SESSION['email'];
 
     } else {

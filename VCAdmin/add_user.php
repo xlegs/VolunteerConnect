@@ -11,25 +11,8 @@
     $r = $cb->view($_GET['id']);
     if ($_POST["username"] ) {
     $newEntry = $_POST;
-    if(!checkImage("profileimage")){
-      $encodedImage = $r["profileimage"];
-      echo "Profile Image ignored. </br>";
-    }else{
-      $encodedImage = base64_encode(file_get_contents($_FILES["profileimage"]["tmp_name"]));
-      echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
-    }
-    
-    $newEntry["profileimage"] = $encodedImage;
 
-    if(!checkImage("coverimage")){
-         $encodedImage = $r["coverimage"];
-          echo "Cover Image ignored. </br>";
-        }else{
-          $encodedImage = base64_encode(file_get_contents($_FILES["coverimage"]["tmp_name"]));
-          echo '<img src="data:image/jpg;base64,'.$encodedImage.'" />';
-        }
-        
-        $newEntry["coverimage"] = $encodedImage;
+    include("include/upload_images.php");
 
      $_POST = array_map_recursive ("trim", $_POST);
      echo "<h3>User Successfully Added</h3>";
@@ -49,25 +32,17 @@
     }
 
  ?>
- <form method="POST" enctype="multipart/form-data">
- <div class="row">
- <div class="large-6 columns">
-   <label>Profile Image:
-    <input type="file" name="profileimage" />
-   </label>
- </div><div class="large-6 columns">
-   <label>Cover Image:
-    <input type="file" name="coverimage" />
-   </label>
- </div>
- </div>
+  <form data-abide method="POST" enctype="multipart/form-data">
+    <?php include("include/image_form.php"); ?>
+ 
   <div class="row">
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>User Name
-        <input type="text" name="username" placeholder="username" value="<?php echo($r["username"]); ?>" />
+        <input required type="text" name="username" placeholder="username" value="<?php echo($r["username"]); ?>" />
       </label>
+      <small class="error">A valid username is required.</small>
     </div>
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>User Type
         <select name="type">
           <option value="admin">Administrator</option>
@@ -75,43 +50,48 @@
         </select>
       </label>
     </div>
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>Email
-        <input type="text" name="email" placeholder="email address" value="<?php echo($r["email"]); ?>" />
+        <input required pattern="email" type="text" name="email" placeholder="Email address" value="<?php echo($r["email"]); ?>" />
       </label>
+      <small class="error">A valid email address is required.</small>
     </div>
     
   </div>
  
   <div class="row">
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>First Name
-        <input type="text" name="firstname" placeholder="first name" value="<?php echo($r["firstname"]); ?>" />
+        <input required type="text" name="firstname" placeholder="First name" value="<?php echo($r["firstname"]); ?>" />
       </label>
+      <small class="error">A valid first name is required.</small>
     </div>
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>Last Name
-        <input type="text" name="lastname" placeholder="last name" value="<?php echo($r["lastname"]); ?>" />
+        <input required type="text" name="lastname" placeholder="Last name" value="<?php echo($r["lastname"]); ?>" />
       </label>
+      <small class="error">A valid last name is required.</small>
     </div>
-    <div class="large-4 columns">
+    <div class="small-4 columns">
       <label>Gender
-        <input type="text" name="gender" placeholder="gender" value="<?php echo($r["gender"]); ?>" />
+        <input required pattern="[MF]" type="text" name="gender" placeholder="M/F" value="<?php echo($r["gender"]); ?>" />
       </label>
+      <small class="error">A valid gender (M or F) is required.</small>
     </div>
   </div>
 
   <div class="row">
-    <div class="large-12 columns">
+    <div class="small-12 columns">
       <label>Birthdate
-        <input type="text" name="birthdate" placeholder="MM/DD/YYYY" value="<?php echo($r["birthdate"]); ?>" />
+        <input required pattern="month_day_year" type="text" name="birthdate" placeholder="MM/DD/YYYY" value="<?php echo($r["birthdate"]); ?>" />
       </label>
+      <small class="error">A valid (but not necessarily real) birthdate is required.</small>
     </div>
   </div>
   <div class="row">
-    <div class="large-12 columns">
+    <div class="small-12 columns">
       <label>Description
-        <textarea name="description" placeholder="Describe Your Event" ><?php echo($r["description"]); ?></textarea>
+        <textarea name="description" placeholder="Describe yourself" ><?php echo($r["description"]); ?></textarea>
       </label>
     </div>
   </div>

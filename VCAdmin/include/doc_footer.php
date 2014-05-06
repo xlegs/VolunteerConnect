@@ -1,5 +1,6 @@
-    <script src="js/vendor/jquery.js"></script>
+
     <script src="js/foundation.min.js"></script>
+    <script src="js/foundation/foundation.abide.js"></script>
     <script>
       $(document).foundation();
     </script>
@@ -18,6 +19,5 @@
         }
     });
     </script>
-	</script>
-  </body>
+	</body>
 </html>

@@ -7,7 +7,7 @@
     <h2>Delete <?php echo(ucfirst(substr($_GET['bucket'], 0, -1))); ?></h2>
     
     <?php
-    ini_set('display_errors', 'On');
+     
     if ($_GET) {
      echo "<h3>".ucfirst(substr($_GET['bucket'], 0, -1))." Successfully Deleted</h3>";
      // adjust these parameters to match your installation

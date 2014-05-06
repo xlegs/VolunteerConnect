@@ -7,7 +7,7 @@
       <a class = "button" href="add_organization.php"> Add a New Organization</a>
      
          <?php
-         // ini_set('display_errors', 'On');
+         //  
          // adjust these parameters to match your installation
          $cb = new Couchbase($CBSERVER, "", "", "organizations");
          $viewResult = $cb->view("organizations", "listAll");
